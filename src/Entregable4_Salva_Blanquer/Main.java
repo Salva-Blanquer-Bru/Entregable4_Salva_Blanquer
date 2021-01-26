@@ -17,6 +17,9 @@ public class Main {
 	private static WebDriver driver;
 	public static void main(String[] args) {
 
+
+
+
 		Busqueda1();
 		Busqueda2();
 
@@ -24,6 +27,7 @@ public class Main {
 
 
 public static void Busqueda1(){
+
 	String Movil;
 	Scanner Teclado = new Scanner(System.in);
 
@@ -35,13 +39,26 @@ public static void Busqueda1(){
 	driver = new ChromeDriver(options);
 	driver.get("https://www.pccomponentes.com/");
 
-	WebElement element= driver.findElement(By.xpath("//*[@id=\"pcc-search-api--input\"]/div/form/input"));
+	/**
+	System.out.println("Pulsa Enter para ir a la seccion de moviles");
+	Teclado.nextLine();
+	WebElement Menu= driver.findElement(By.xpath("\t//*[@id=\"open-main-menu\"]"));
+	Menu.click();
+	WebElement MenuMoviles= driver.findElement(By.xpath("//*[@id=\"GTM-superitem-237\"]/span"));
+	Menu.click();
+	 */
+	WebElement BarraDeBusqueda= driver.findElement(By.xpath("//*[@id=\"pcc-search-api--input\"]/div/form/input"));
+
 
 	System.out.println("Que Smartphone deseas buscar");
 	Movil= Teclado.nextLine();
-	element.sendKeys(Movil);
-	element.submit();
+	BarraDeBusqueda.sendKeys(Movil);
+	BarraDeBusqueda.submit();
 
+	System.out.println("Pulsa enter para ver precios");
+	Teclado.nextLine();
+	String resultados1 = driver.findElement(By.xpath("//*[@id=\"pcc-search-api--hits\"]/div[2]/ol")).getText();
+	System.out.println(resultados1);
 
 }
 
@@ -63,5 +80,14 @@ public static void Busqueda1(){
 		Movil= Teclado.nextLine();
 		element.sendKeys(Movil);
 		element.submit();
+
+		System.out.println(" Pulsa enter para ver precios");
+		Teclado.nextLine();
+
+		for (int p = 3; p < autoincremtal; p++) {
+
+		String resultados2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[2]/div/span[3]/div[2]/div[3]/div")).getText();
+		System.out.println(resultados2);
+
 
 }}
