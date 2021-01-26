@@ -84,10 +84,10 @@ public static void Busqueda1(){
 		System.out.println(" Pulsa enter para ver precios");
 		Teclado.nextLine();
 
-		for (int p = 3; p < autoincremtal; p++) {
+		for (int p = 3; p < p; p++) {
 
 		String resultados2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[2]/div/span[3]/div[2]/div[3]/div")).getText();
 		System.out.println(resultados2);
 
 
-}}
+}}}
