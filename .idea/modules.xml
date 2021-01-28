@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Ejemplo ivan/Ejemplo ivan.iml" filepath="$PROJECT_DIR$/Ejemplo ivan/Ejemplo ivan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practica3/Practica3.iml" filepath="$PROJECT_DIR$/Practica3/Practica3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Proyectos PRG/Practica3_Salva_Blanquer/Practica3_Salva_Blanquer.iml" filepath="$PROJECT_DIR$/../../../Proyectos PRG/Practica3_Salva_Blanquer/Practica3_Salva_Blanquer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Proyectos PRG/Programacion/Programacion.iml" filepath="$PROJECT_DIR$/../../../Proyectos PRG/Programacion/Programacion.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Web_scraping_Salva_Blanquer.iml" filepath="$PROJECT_DIR$/.idea/Web_scraping_Salva_Blanquer.iml" />
     </modules>
   </component>
