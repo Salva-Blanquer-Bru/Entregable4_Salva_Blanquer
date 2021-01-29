@@ -1,7 +1,9 @@
 package Entregable4_Salva_Blanquer;
 
 
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,11 +21,12 @@ public class Main {
 
 
 
-	//	Busqueda1();
-		System.out.println("Pulsa enter para la siguiente busqueda");
+	Busqueda1();
+		driver.close();
+	System.out.println("Pulsa enter para la siguiente busqueda");
 		teclado.nextLine();
 		Busqueda2();
-
+	   driver.close();
 	}
 
 
@@ -41,41 +44,40 @@ public static void Busqueda1(){
 	driver.get("https://www.pccomponentes.com/smartphone-moviles");
 
 
-	WebElement BarraDeBusqueda= driver.findElement(By.xpath("//*[@id=\"pcc-search-api--input\"]/div/form/input"));
+	WebElement BarraDeBusqueda1= driver.findElement(By.xpath("//*[@id=\"pcc-search-api--input\"]/div/form/input"));
 
+	WebElement ventanaCookies= driver.findElement(By.xpath("//*[@id=\"familia-secundaria\"]/div[5]/div/div/div[2]/button"));
+	ventanaCookies.click();
 
 	System.out.println("Que Smartphone deseas buscar");
 	movil1= teclado.nextLine();
-	BarraDeBusqueda.sendKeys(movil1);
-	BarraDeBusqueda.submit();
-
-
-	System.out.println("Enter para selecionar la categoria de moviles");
-	teclado.nextLine();
-	WebElement Categoria= driver.findElement(By.xpath("/html/body/header/div[3]/div[2]/aside/div[3]/div[2]/div/ul/li[1]/div/div"));
-	Categoria.click();
+	BarraDeBusqueda1.sendKeys(movil1);
+	BarraDeBusqueda1.sendKeys(Keys.ENTER);
 
 	System.out.println("Pulsa enter para ver precios");
 	teclado.nextLine();
 	System.out.println("---------------------------PC_COMPONENTES-----------------------");
 
-
-
 	for (int i = 1; i < 4 ; i++) {
+		try {
+			String modelo1 = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div[2]/div[2]/div[3]/div/div["+i+"]/article/div/div/header/h3/a")).getText();
+
+			String precio1 = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div[2]/div[2]/div[3]/div/div["+i+"]/article/div/div/div[2]/div/span")).getText();
+
+			System.out.println(modelo1);
+			System.out.println(precio1+ "€");
+			System.out.println("----------------------------------------------------------------");
+
+		}catch (Exception e){
 
 
-			String modelo = driver.findElement(By.xpath("//*[@id=\"pcc-search-api--hits\"]/div[2]/ol/li["+i+"]")).getText();
+}}}
 
 
-	System.out.println(modelo);
-		System.out.println("----------------------------------------------------------------");
-}}
-
-;
 
 	public static void Busqueda2(){
 		String movil2;
-		Scanner Teclado = new Scanner(System.in);
+		Scanner teclado = new Scanner(System.in);
 
 		String exePath = "..\\Web_scraping_Salva_Blanquer\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver",exePath);
@@ -85,23 +87,40 @@ public static void Busqueda1(){
 		driver = new ChromeDriver(options);
 		driver.get("https://www.amazon.es");
 
-		WebElement element= driver.findElement(By.xpath("//*[@id=\"twotabsearchtextbox\"]"));
+		WebElement BarraDeBusqueda2= driver.findElement(By.xpath("//*[@id=\"twotabsearchtextbox\"]"));
+
+
 
 		System.out.println("Que Smartphone deseas buscar");
-		movil2= Teclado.nextLine();
-		element.sendKeys(movil2);
-		element.submit();
+		movil2= teclado.nextLine();
+		BarraDeBusqueda2.sendKeys(movil2);
+		BarraDeBusqueda2.sendKeys(Keys.ENTER);
+
+
+
+		System.out.println("Enter para selecionar la categoria de moviles");
+		teclado.nextLine();
+		WebElement Categoria2= driver.findElement(By.xpath("//*[@id=\"n/934197031\"]/span/a/span"));
+		Categoria2.click();
+
+
 
 		System.out.println(" Pulsa enter para ver precios");
-		Teclado.nextLine();
+		teclado.nextLine();
 		System.out.println("---------------------------AMAZON-----------------------");
 
-		for (int i = 1; i < 4 ; i++) {
+		for (int i = 1; i < 5 ; i++) {
+			try {
+				String modelo2 = driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+i+"]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2")).getText();
+
+				String precio2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[2]/div/span[3]/div[2]/div["+i+"]/div/span/div/div/div[2]/div[2]/div/div[2]/div[1]/div/div[1]/div/div/div/a/span[1]/span[2]/span[1]")).getText();
+
+				System.out.println(modelo2);
+				System.out.println(precio2+ "€");
+				System.out.println("----------------------------------------------------------------");
+
+			}catch (Exception e){
 
 
-		String resultados2 = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[1]/div[2]/div/span[3]/div[2]/div["+i+"]/div")).getText();
 
-		System.out.println(resultados2);
-		System.out.println("----------------------------------------------------------------");
-
-}}}
+}}}}
